@@ -1,9 +1,14 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const { mysqlDb } = require("./src/configs/sequelize.config");
+const corsOptions = require("./src/configs/cors.config");
+const vaccineApi = require("./src/apis/vaccine.api");
+
+app.use(cors(corsOptions));
 
 // ==================== CONNECT MONGODB ====================
 mongoose
@@ -15,6 +20,9 @@ mongoose
     console.log("Error", error);
     process.exit(1);
   });
+
+// ==================== API ====================\
+app.use("/vaccine", vaccineApi);
 
 // ==================== LISTENING ====================
 const normalizePort = (port) => parseInt(port, 10);
