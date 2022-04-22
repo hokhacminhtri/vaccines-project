@@ -20,6 +20,4 @@ const provinces = db.define(
   { tableName: "provinces", timestamps: false, initialAutoIncrement: 1 }
 );
 
-// Foreign key
-
-module.exports = districts;
+module.exports = provinces;

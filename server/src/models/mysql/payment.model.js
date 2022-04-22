@@ -1,4 +1,5 @@
 const { DataTypes, db } = require("../../configs/sequelize.config");
+const registration = require("./registration.model");
 
 const payment = db.define(
   "payment",
@@ -25,5 +26,15 @@ const payment = db.define(
 );
 
 // Foreign key
+registration.hasOne(payment, {
+  sourceKey: "registrationId",
+  foreignKey: {
+    name: "registrationId",
+    allowNull: false,
+  },
+});
+payment.belongsTo(registration, {
+  foreignKey: "registrationId",
+});
 
 module.exports = payment;

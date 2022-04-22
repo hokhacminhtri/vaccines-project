@@ -16,6 +16,4 @@ const addresses = db.define(
   { tableName: "addresses", timestamps: false, initialAutoIncrement: 1 }
 );
 
-// Foreign key
-
 module.exports = addresses;

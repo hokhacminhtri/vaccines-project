@@ -1,29 +1,46 @@
 const { DataTypes, db } = require("../../configs/sequelize.config");
+const wards = require("./wards.model");
+const registration = require("./registration.model");
 
-const payment = db.define(
-  "payment",
+const addresses = db.define(
+  "addresses",
   {
-    paymentId: {
+    addressId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    total: {
-      type: DataTypes.DECIMAL,
-      allowNull: false,
-    },
-    paymentMethod: {
+    detail: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    transactionId: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-    },
   },
-  { tableName: "payment", timestamps: false, initialAutoIncrement: 1 }
+  { tableName: "addresses", timestamps: false, initialAutoIncrement: 1 }
 );
 
 // Foreign key
+wards.hasMany(addresses, {
+  sourceKey: "wardId",
+  foreignKey: {
+    name: "wardId",
+    allowNull: false,
+  },
+  onUpdate: "CASCADE",
+  onDelete: "NULL",
+});
+addresses.belongsTo(wards, {
+  foreignKey: "wardId",
+});
 
-module.exports = payment;
+registration.hasMany(addresses, {
+  sourceKey: "registrationId",
+  foreignKey: {
+    name: "registrationId",
+    allowNull: false,
+  },
+});
+addresses.belongsTo(registration, {
+  foreignKey: "registrationId",
+});
+
+module.exports = addresses;

@@ -1,4 +1,5 @@
 const { DataTypes, db } = require("../../configs/sequelize.config");
+const districts = require("./districts.model");
 
 const wards = db.define(
   "wards",
@@ -21,5 +22,15 @@ const wards = db.define(
 );
 
 // Foreign key
+districts.hasMany(wards, {
+  sourceKey: "districtId",
+  foreignKey: {
+    name: "districtId",
+    allowNull: false,
+  },
+});
+wards.belongsTo(districts, {
+  foreignKey: "districtId",
+});
 
 module.exports = wards;

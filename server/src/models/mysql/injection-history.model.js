@@ -1,4 +1,5 @@
 const { DataTypes, db } = require("../../configs/sequelize.config");
+const registration = require("./registration.model");
 
 const injectionHistory = db.define(
   "injectionHistory",
@@ -21,5 +22,15 @@ const injectionHistory = db.define(
 );
 
 // Foreign key
+registration.hasMany(injectionHistory, {
+  sourceKey: "registrationId",
+  foreignKey: {
+    name: "registrationId",
+    allowNull: false,
+  },
+});
+injectionHistory.belongsTo(registration, {
+  sourceKey: "registrationId",
+});
 
 module.exports = injectionHistory;
