@@ -1,23 +1,22 @@
-const { DataTypes, db } = require("../../configs/sequelize.config");
+const { DataTypes, mysqlDb } = require("../../configs/sequelize.config");
 
-const provinces = db.define(
+const Province = mysqlDb.define(
   "provinces",
   {
-    districtId: {
+    provinceId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
     },
     code: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(10),
       allowNull: false,
     },
     name: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
   },
-  { tableName: "provinces", timestamps: false, initialAutoIncrement: 1 }
+  { tableName: "provinces", timestamps: false }
 );
 
-module.exports = provinces;
+module.exports = Province;

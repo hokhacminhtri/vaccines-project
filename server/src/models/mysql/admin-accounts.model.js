@@ -1,19 +1,24 @@
-const { DataTypes, db } = require("../../configs/sequelize.config");
+const { DataTypes, mysqlDb } = require("../../configs/sequelize.config");
 
-const addresses = db.define(
-  "addresses",
+const AdminAccount = mysqlDb.define(
+  "adminAccounts",
   {
     adminId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    detail: {
-      type: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING(72),
       allowNull: false,
     },
   },
-  { tableName: "addresses", timestamps: false, initialAutoIncrement: 1 }
+  { tableName: "adminAccounts", timestamps: true, initialAutoIncrement: 1 }
 );
 
-module.exports = addresses;
+module.exports = AdminAccount;

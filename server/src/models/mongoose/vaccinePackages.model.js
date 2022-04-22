@@ -21,12 +21,14 @@ const vaccinePackagesSchema = new Schema({
   categoryId: {
     type: Schema.Types.ObjectId,
     required: true,
+    ref: "Category",
   },
   vaccines: [
     {
       vaccineId: {
         type: Schema.Types.ObjectId,
         required: true,
+        ref: "Vaccine",
       },
       vaccineName: {
         type: String,
@@ -40,6 +42,10 @@ const vaccinePackagesSchema = new Schema({
   ],
 });
 
-const VaccinePackages = mongoose.model(vaccinePackagesSchema);
+const VaccinePackage = mongoose.model(
+  "VaccinePackage",
+  vaccinePackagesSchema,
+  "vaccinePackages"
+);
 
-module.exports = VaccinePackages;
+module.exports = VaccinePackage;

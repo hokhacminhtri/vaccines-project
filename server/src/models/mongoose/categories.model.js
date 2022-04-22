@@ -5,9 +5,10 @@ const categoriesSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
 });
 
-const Categories = mongoose.model(categoriesSchema);
+const Category = mongoose.model("Category", categoriesSchema, "categories");
 
-module.exports = Categories;
+module.exports = Category;

@@ -59,11 +59,12 @@ const vaccinesSchema = new Schema({
       categoryId: {
         type: Schema.Types.ObjectId,
         required: true,
+        ref: "Category",
       },
     },
   ],
 });
 
-const Vaccines = mongoose.model(vaccinesSchema);
+const Vaccine = mongoose.model("Vaccine", vaccinesSchema, "vaccines");
 
-module.exports = Vaccines;
+module.exports = Vaccine;

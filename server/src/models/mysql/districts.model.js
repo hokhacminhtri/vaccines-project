@@ -1,16 +1,15 @@
-const { DataTypes, db } = require("../../configs/sequelize.config");
-const provinces = require("./provinces.model");
+const { DataTypes, mysqlDb } = require("../../configs/sequelize.config");
+const Province = require("./provinces.model");
 
-const districts = db.define(
+const District = mysqlDb.define(
   "districts",
   {
     districtId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(20),
       allowNull: false,
     },
     prefix: {
@@ -18,19 +17,21 @@ const districts = db.define(
       allowNull: false,
     },
   },
-  { tableName: "districts", timestamps: false, initialAutoIncrement: 1 }
+  { tableName: "districts", timestamps: false }
 );
 
 // Foreign key
-provinces.hasMany(districts, {
+Province.hasMany(District, {
   sourceKey: "provinceId",
   foreignKey: {
     name: "provinceId",
     allowNull: false,
   },
+  onUpdate: "CASCADE",
+  onDelete: "RESTRICT",
 });
-districts.belongsTo(provinces, {
+District.belongsTo(Province, {
   foreignKey: "provinceId",
 });
 
-module.exports = districts;
+module.exports = District;

@@ -1,16 +1,17 @@
 const Sequelize = require("sequelize").Sequelize;
 const { Op, DataTypes } = require("sequelize");
 
-const { DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD } = process.env;
+const { MYSQL_HOST, MYSQL_DB_NAME, MYSQL_USERNAME, MYSQL_PASSWORD } =
+  process.env;
 
-const db = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
-  host: DB_HOST || "localhost",
+const mysqlDb = new Sequelize(MYSQL_DB_NAME, MYSQL_USERNAME, MYSQL_PASSWORD, {
+  host: MYSQL_HOST || "localhost",
   dialect: "mysql",
   logging: false,
 });
 
 module.exports = {
-  db,
+  mysqlDb,
   Op,
   DataTypes,
 };
