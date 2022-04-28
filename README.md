@@ -85,6 +85,22 @@ Báo cáo cần ghi rõ thông tin cá nhân, thông tin nhóm, đánh giá cá 
 
 # Coding Conventions
 
+- IDE sử dụng: `Visual Studio Code`.
+- Format với `Prettier` extension.
+- Consistent coding với `Editor Config` extension.
+- Tên file, folder viết cách nhau bới dấu `-` nếu có nhiều từ.
+- Tên các bảng trong databases và models là `camelCase`.
+- Tên thuộc tính trong bảng (model), tên biến, hàm là `camelCase`.
+- Đặt tên file đi kèm với tên module của nó (bỏ `s`), trừ views và public. Ví dụ (name.controller.js, name.route.js).
+- Dùng async / await khi code Server (nếu không bắt buộc phải dùng Promise).
+- Tên các components, pages phía Client là dạng `PascalCase`.
+- Không sử dụng hard code (magic number - là những chuỗi hoặc con số cứng). Hãy đặt nó trong `constants`.
+- Pull code trước khi push (báo conflict cho team nếu nó quá phức tạp).
+- Kiểm tra các template, mixin, helper trước khi code 1 chức năng (nhằm tái sử dụng lại chức năng).
+- Cố gắng tách các module, mixin nếu có thể.
+- Đặt kiểu method trước mối hàm của controller. Ví dụ `getController, postController`.
+- Lưu đặt `try catch` trong controller để bắt lỗi (hoặc trong những hàm có connect DB). Log lỗi kèm với tên hàm.
+
 # Hướng dẫn chạy
 
 ## **Back-end (Server)**
