@@ -1,9 +1,9 @@
-import { Navigate, Route } from "react-router-dom";
-import HomePage from "../pages/HomePage";
+import { Navigate, Route } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <HomePage />,
     isProtected: true,
   },

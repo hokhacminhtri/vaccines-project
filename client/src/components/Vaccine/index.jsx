@@ -1,10 +1,10 @@
-import Button from "@mui/material/Button";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import React from "react";
+import Button from '@mui/material/Button';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import React from 'react';
 
-export default function Vaccine({ name = "", price = 0 }) {
+export default function Vaccine({ name = '', price = 0 }) {
   return (
     <>
       <CardContent>

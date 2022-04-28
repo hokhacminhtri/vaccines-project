@@ -1,6 +1,6 @@
-import axiosClient from "./axiosClient";
+import axiosClient from './axiosClient';
 
-const URL = "/vaccine";
+const URL = '/vaccine';
 
 const vaccineApi = {
   getAllVaccines: () => {

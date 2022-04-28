@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const userContextDefaultValue = {
-  username: "",
+  username: '',
   isAuth: true,
   onChangeIsAuth: () => {},
 };

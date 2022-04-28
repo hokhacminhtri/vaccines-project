@@ -1,10 +1,10 @@
-import axios from "axios";
-import queryString from "query-string";
+import axios from 'axios';
+import queryString from 'query-string';
 
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
   headers: {
-    "content-type": "application/json",
+    'content-type': 'application/json',
   },
   withCredentials: true,
   paramsSerializer: (params) => queryString.stringify(params),
@@ -16,7 +16,7 @@ axiosClient.interceptors.request.use(
   },
   (error) => {
     throw error;
-  }
+  },
 );
 
 axios.interceptors.response.use(
@@ -25,7 +25,7 @@ axios.interceptors.response.use(
   },
   (error) => {
     throw error;
-  }
+  },
 );
 
 export default axiosClient;

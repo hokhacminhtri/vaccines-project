@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import vaccineApi from "../apis/vaccineApi";
-import Navbar from "../components/Navbar";
-import Vaccine from "../components/Vaccine";
-import { UserContext } from "../contexts/userContext";
+import React, { useContext, useEffect, useState } from 'react';
+import vaccineApi from '../apis/vaccineApi';
+import Navbar from '../components/Navbar';
+import Vaccine from '../components/Vaccine';
+import { UserContext } from '../contexts/userContext';
 
 export default function HomePage() {
   const [vaccines, setVaccines] = useState([]);

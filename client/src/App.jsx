@@ -1,10 +1,10 @@
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import { useContext } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { renderRoutes, routes } from "./configs/route.config";
-import theme from "./configs/theme.config";
-import { UserContext } from "./contexts/userContext";
-import NotFound from "./pages/NotFound";
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import { useContext } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { renderRoutes, routes } from './configs/route.config';
+import theme from './configs/theme.config';
+import { UserContext } from './contexts/userContext';
+import NotFound from './pages/NotFound';
 
 function App() {
   const { isAuth } = useContext(UserContext);
