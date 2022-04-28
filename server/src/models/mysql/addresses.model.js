@@ -1,9 +1,9 @@
-const { DataTypes, mysqlDb } = require("../../configs/sequelize.config");
-const Ward = require("./wards.model");
-const Registration = require("./registration.model");
+const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
+const Ward = require('./wards.model');
+const Registration = require('./registration.model');
 
 const Address = mysqlDb.define(
-  "addresses",
+  'addresses',
   {
     addressId: {
       type: DataTypes.INTEGER,
@@ -15,34 +15,34 @@ const Address = mysqlDb.define(
       allowNull: false,
     },
   },
-  { tableName: "addresses", timestamps: false, initialAutoIncrement: 1 }
+  { tableName: 'addresses', timestamps: false, initialAutoIncrement: 1 },
 );
 
 // Foreign key
 Ward.hasMany(Address, {
-  sourceKey: "wardId",
+  sourceKey: 'wardId',
   foreignKey: {
-    name: "wardId",
+    name: 'wardId',
     allowNull: false,
   },
-  onUpdate: "CASCADE",
-  onDelete: "RESTRICT",
+  onUpdate: 'CASCADE',
+  onDelete: 'RESTRICT',
 });
 Address.belongsTo(Ward, {
-  foreignKey: "wardId",
+  foreignKey: 'wardId',
 });
 
 Registration.hasMany(Address, {
-  sourceKey: "registrationId",
+  sourceKey: 'registrationId',
   foreignKey: {
-    name: "registrationId",
+    name: 'registrationId',
     allowNull: false,
   },
-  onUpdate: "CASCADE",
-  onDelete: "RESTRICT",
+  onUpdate: 'CASCADE',
+  onDelete: 'RESTRICT',
 });
 Address.belongsTo(Registration, {
-  foreignKey: "registrationId",
+  foreignKey: 'registrationId',
 });
 
 module.exports = Address;

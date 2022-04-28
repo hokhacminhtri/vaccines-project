@@ -1,5 +1,5 @@
-const { DataTypes, mysqlDb } = require("../../configs/sequelize.config");
-const { PRODUCT_TYPE } = require("../../constants");
+const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
+const { PRODUCT_TYPE } = require('../../constants');
 
 const productTypes = [];
 for (const key in PRODUCT_TYPE) {
@@ -7,7 +7,7 @@ for (const key in PRODUCT_TYPE) {
 }
 
 const Registration = mysqlDb.define(
-  "registration",
+  'registration',
   {
     registrationId: {
       type: DataTypes.INTEGER,
@@ -49,7 +49,7 @@ const Registration = mysqlDb.define(
       defaultValue: new Date(),
     },
   },
-  { tableName: "registration", timestamps: false, initialAutoIncrement: 1 }
+  { tableName: 'registration', timestamps: false, initialAutoIncrement: 1 },
 );
 
 module.exports = Registration;

@@ -1,7 +1,7 @@
-const { DataTypes, mysqlDb } = require("../../configs/sequelize.config");
+const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
 
 const AdminAccount = mysqlDb.define(
-  "adminAccounts",
+  'adminAccounts',
   {
     adminId: {
       type: DataTypes.INTEGER,
@@ -18,7 +18,7 @@ const AdminAccount = mysqlDb.define(
       allowNull: false,
     },
   },
-  { tableName: "adminAccounts", timestamps: true, initialAutoIncrement: 1 }
+  { tableName: 'adminAccounts', timestamps: true, initialAutoIncrement: 1 },
 );
 
 module.exports = AdminAccount;

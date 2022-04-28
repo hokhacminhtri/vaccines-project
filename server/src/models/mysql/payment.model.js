@@ -1,8 +1,8 @@
-const { DataTypes, mysqlDb } = require("../../configs/sequelize.config");
-const Registration = require("./registration.model");
+const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
+const Registration = require('./registration.model');
 
 const Payment = mysqlDb.define(
-  "payment",
+  'payment',
   {
     paymentId: {
       type: DataTypes.INTEGER,
@@ -22,21 +22,21 @@ const Payment = mysqlDb.define(
       allowNull: false,
     },
   },
-  { tableName: "payment", timestamps: false, initialAutoIncrement: 1 }
+  { tableName: 'payment', timestamps: false, initialAutoIncrement: 1 },
 );
 
 // Foreign key
 Registration.hasOne(Payment, {
-  sourceKey: "registrationId",
+  sourceKey: 'registrationId',
   foreignKey: {
-    name: "registrationId",
+    name: 'registrationId',
     allowNull: false,
   },
-  onUpdate: "CASCADE",
-  onDelete: "RESTRICT",
+  onUpdate: 'CASCADE',
+  onDelete: 'RESTRICT',
 });
 Payment.belongsTo(Registration, {
-  foreignKey: "registrationId",
+  foreignKey: 'registrationId',
 });
 
 module.exports = Payment;

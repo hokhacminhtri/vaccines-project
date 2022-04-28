@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const vaccinesSchema = new Schema({
@@ -59,12 +59,12 @@ const vaccinesSchema = new Schema({
       categoryId: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: "Category",
+        ref: 'Category',
       },
     },
   ],
 });
 
-const Vaccine = mongoose.model("Vaccine", vaccinesSchema, "vaccines");
+const Vaccine = mongoose.model('Vaccine', vaccinesSchema, 'vaccines');
 
 module.exports = Vaccine;

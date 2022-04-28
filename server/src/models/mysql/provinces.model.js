@@ -1,7 +1,7 @@
-const { DataTypes, mysqlDb } = require("../../configs/sequelize.config");
+const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
 
 const Province = mysqlDb.define(
-  "provinces",
+  'provinces',
   {
     provinceId: {
       type: DataTypes.INTEGER,
@@ -16,7 +16,7 @@ const Province = mysqlDb.define(
       allowNull: false,
     },
   },
-  { tableName: "provinces", timestamps: false }
+  { tableName: 'provinces', timestamps: false },
 );
 
 module.exports = Province;

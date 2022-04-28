@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const vaccinePackagesSchema = new Schema({
@@ -21,14 +21,14 @@ const vaccinePackagesSchema = new Schema({
   categoryId: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: "Category",
+    ref: 'Category',
   },
   vaccines: [
     {
       vaccineId: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: "Vaccine",
+        ref: 'Vaccine',
       },
       vaccineName: {
         type: String,
@@ -43,9 +43,9 @@ const vaccinePackagesSchema = new Schema({
 });
 
 const VaccinePackage = mongoose.model(
-  "VaccinePackage",
+  'VaccinePackage',
   vaccinePackagesSchema,
-  "vaccinePackages"
+  'vaccinePackages',
 );
 
 module.exports = VaccinePackage;
