@@ -11,6 +11,17 @@ const theme = createTheme({
       xl: 1200,
     },
   },
+  palette: {
+    primary: {
+      main: '#005bbb',
+    },
+    secondary: {
+      main: '#fff',
+    },
+    accent: {
+      main: '#ffd500',
+    },
+  },
 });
 
 export default theme;
