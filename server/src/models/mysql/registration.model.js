@@ -1,5 +1,6 @@
 const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
 const { PRODUCT_TYPE } = require('../../constants');
+const Customer = require('./customers.model');
 
 const productTypes = [];
 for (const key in PRODUCT_TYPE) {
@@ -51,5 +52,19 @@ const Registration = mysqlDb.define(
   },
   { tableName: 'registration', timestamps: false, initialAutoIncrement: 1 },
 );
+
+// Foreign key
+Customer.hasMany(Registration, {
+  sourceKey: 'customerId',
+  foreignKey: {
+    name: 'customerId',
+    allowNull: false,
+  },
+  onUpdate: 'CASCADE',
+  onDelete: 'RESTRICT',
+});
+Registration.belongsTo(Customer, {
+  foreignKey: 'customerId',
+});
 
 module.exports = Registration;
