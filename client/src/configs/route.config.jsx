@@ -1,11 +1,18 @@
+import React from 'react';
 import { Navigate, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
+const LoginPage = React.lazy(() => import('../pages/admin/LoginPage'));
 
 const routes = [
   {
     path: '/',
     element: <HomePage />,
     isProtected: true,
+  },
+  {
+    path: '/admin/login',
+    element: <LoginPage />,
+    isProtected: false,
   },
 ];
 
@@ -21,7 +28,7 @@ function renderRoutes(routes, isAuth = false) {
             element={
               <>
                 {isProtected && !isAuth ? (
-                  <Navigate replace={true} to="/login" />
+                  <Navigate replace={true} to="/admin/login" />
                 ) : (
                   element
                 )}
