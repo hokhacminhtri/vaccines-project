@@ -11,9 +11,16 @@ const theme = createTheme({
       xl: 1200,
     },
   },
-  typography: {
-    fontSize: 16,
-    htmlFontSize: 10,
+  palette: {
+    primary: {
+      main: '#005bbb',
+    },
+    secondary: {
+      main: '#fff',
+    },
+    accent: {
+      main: '#ffd500',
+    },
   },
 });
 
