@@ -2,12 +2,12 @@ import { Box, Button, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import CenterAddressSelect from '../CenterAddressSelect';
 import PageHeading from '../commons/PageHeading';
+import NewMemberForm from './NewMemberForm';
 import OldMemberForm from './OldMemberForm';
 import RegisteredRadio from './RegisteredRadio';
-import useStyle from './style';
 import VaccineSelectGroup from './VaccineSelectGroup';
 
-const REGISTERED_DEFAULT = 1;
+const REGISTERED_DEFAULT = 0;
 
 function TitleTypography({ children }) {
   return (
@@ -24,7 +24,6 @@ function TitleTypography({ children }) {
 }
 
 export default function Registration() {
-  const classes = useStyle();
   const [isRegistered, setIsRegistered] = useState(REGISTERED_DEFAULT);
 
   const onRadioChange = (registered = 0) => {
@@ -53,10 +52,13 @@ export default function Registration() {
             <TitleTypography>
               đăng ký với thành viên khách hàng thân thiết
             </TitleTypography>
-            <OldMemberForm classes={classes} />
+            <OldMemberForm />
           </>
         ) : (
-          <>Khách mới</>
+          <>
+            <TitleTypography>đăng ký cho khách hàng mới</TitleTypography>
+            <NewMemberForm />
+          </>
         )}
       </Box>
 

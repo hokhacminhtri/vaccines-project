@@ -7,7 +7,7 @@ export default function RegistrationPage() {
   usePageTitle('Đăng ký tiêm chủng');
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ py: 2 }}>
       <Registration />
     </Container>
   );
