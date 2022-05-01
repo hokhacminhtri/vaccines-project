@@ -1,6 +1,6 @@
+import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 import useGetProvinces from '../../hooks/useGetProvinces';
 
@@ -16,64 +16,53 @@ const dummyCenterList = [
   },
 ];
 
-function renderOptions(options = []) {
-  return options.map((option, index) => (
-    <MenuItem key={index} value={option.value}>
-      {option.label}
-    </MenuItem>
-  ));
-}
-
 export default function CenterAddressSelect() {
   const provinces = useGetProvinces();
   const [centerList, setCenterList] = useState([]);
+  const provinceOptions = provinces.map((p) => ({ ...p, label: p.name }));
 
-  const onProvinceChange = (e) => {
-    const provinceId = Number(e.target.value);
+  const onProvinceChange = (e, province) => {
+    const provinceId = Number(province.provinceId);
 
     // Find center list by provinceId (call API)
     const centers = dummyCenterList.filter((i) => i.value === provinceId);
     setCenterList(centers);
   };
 
-  const onCenterChange = (e) => {
-    const centerId = Number(e.target.value);
+  const onCenterChange = (e, center) => {
+    const centerId = Number(center.centerId);
+    console.log(centerId);
     // ...
   };
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={6}>
-        <Select
+        <Autocomplete
           id="centerAddress"
           size="small"
           fullWidth
-          defaultValue={-1}
-          onChange={onProvinceChange}>
-          <MenuItem disabled value={-1}>
-            <span className="disabled">Chọn Tỉnh / Thành</span>
-          </MenuItem>
-          {renderOptions(
-            provinces.map((p) => ({
-              label: p.name,
-              value: p.provinceId,
-            })),
+          disablePortal
+          options={provinceOptions}
+          onChange={onProvinceChange}
+          renderInput={(params) => (
+            <TextField {...params} placeholder="Chọn Tỉnh / Thành" />
           )}
-        </Select>
+        />
       </Grid>
 
       <Grid item xs={12} md={6}>
-        <Select
+        <Autocomplete
           id="centerName"
           size="small"
           fullWidth
-          defaultValue={-1}
-          onChange={onCenterChange}>
-          <MenuItem disabled value={-1}>
-            <span className="disabled">Chọn trung tâm VNVC</span>
-          </MenuItem>
-          {renderOptions(centerList)}
-        </Select>
+          disablePortal
+          options={centerList}
+          onChange={onCenterChange}
+          renderInput={(params) => (
+            <TextField {...params} placeholder="Chọn trung tâm VNVC" />
+          )}
+        />
       </Grid>
     </Grid>
   );

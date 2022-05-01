@@ -7,6 +7,7 @@ import theme from './configs/theme.config';
 import { UserContext } from './contexts/userContext';
 import NotFound from './pages/NotFound';
 import './styles/common.css';
+import './styles/reset.css';
 
 function App() {
   const { isAuth } = useContext(UserContext);

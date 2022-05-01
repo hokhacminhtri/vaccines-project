@@ -1,11 +1,4 @@
-import {
-  Alert,
-  Box,
-  Button,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Alert, Button, Stack, TextField, Typography } from '@mui/material';
 import React, { useRef, useState } from 'react';
 
 export default function OldMemberForm() {
@@ -20,17 +13,8 @@ export default function OldMemberForm() {
   };
 
   return (
-    <Box py={1}>
+    <>
       <Typography
-        variant="h5"
-        component="h2"
-        color="primary.dark"
-        fontWeight="medium">
-        ĐĂNG KÝ VỚI THÀNH VIÊN KHÁCH HÀNG THÂN THIẾT
-      </Typography>
-
-      <Typography
-        mt={2}
         variant="inherit"
         component="p"
         color="text.secondary"
@@ -57,6 +41,6 @@ export default function OldMemberForm() {
       </Stack>
 
       {Boolean(error) && <Alert severity="error">{error}</Alert>}
-    </Box>
+    </>
   );
 }

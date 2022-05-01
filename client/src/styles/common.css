@@ -18,3 +18,9 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.disabled {
+  cursor: no-drop;
+  pointer-events: none;
+  opacity: 0.5;
+}

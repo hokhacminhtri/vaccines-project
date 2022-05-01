@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 const LoginPage = React.lazy(() => import('../pages/admin/LoginPage'));
+const RegistrationPage = React.lazy(() => import('../pages/RegistrationPage'));
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
   {
     path: '/admin/login',
     element: <LoginPage />,
+    isProtected: false,
+  },
+  {
+    path: '/registration',
+    element: <RegistrationPage />,
     isProtected: false,
   },
 ];
