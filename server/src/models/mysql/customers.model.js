@@ -8,12 +8,12 @@ const Customer = mysqlDb.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    firstName: {
+    fullName: {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    lastName: {
-      type: DataTypes.STRING(50),
+    code: {
+      type: DataTypes.STRING(20),
       allowNull: false,
     },
     birthday: {
@@ -23,14 +23,10 @@ const Customer = mysqlDb.define(
     gender: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
+      defaultValue: false, // nam
     },
     phone: {
       type: DataTypes.STRING(10),
-      allowNull: false,
-    },
-    timesOfRegistration: {
-      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },

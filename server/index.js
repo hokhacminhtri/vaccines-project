@@ -8,6 +8,23 @@ const { mysqlDb } = require('./src/configs/sequelize.config');
 const corsOptions = require('./src/configs/cors.config');
 const vaccineApi = require('./src/apis/vaccine.api');
 
+// import MySQL models
+const Address = require('./src/models/mysql/addresses.model');
+const AdminAccount = require('./src/models/mysql/admin-accounts.model');
+const Customer = require('./src/models/mysql/customers.model');
+const District = require('./src/models/mysql/districts.model');
+const InjectionHistory = require('./src/models/mysql/injection-history.model');
+const Payment = require('./src/models/mysql/payment.model');
+const Province = require('./src/models/mysql/provinces.model');
+const Registration = require('./src/models/mysql/registration.model');
+const VNVCCenter = require('./src/models/mysql/vnvc-centers.model');
+const Ward = require('./src/models/mysql/wards.model');
+
+// import MongoDB models
+const Category = require('./src/models/mongoose/categories.model');
+const VaccinePackage = require('./src/models/mongoose/vaccine-packages.model');
+const Vaccine = require('./src/models/mongoose/vaccines.model');
+
 app.use(cors(corsOptions));
 
 // ==================== CONNECT MONGODB ====================

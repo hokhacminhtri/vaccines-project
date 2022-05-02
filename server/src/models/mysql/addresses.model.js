@@ -1,6 +1,6 @@
 const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
 const Ward = require('./wards.model');
-const Registration = require('./registration.model');
+const Customer = require('./customers.model');
 
 const Address = mysqlDb.define(
   'addresses',
@@ -32,17 +32,17 @@ Address.belongsTo(Ward, {
   foreignKey: 'wardId',
 });
 
-Registration.hasMany(Address, {
-  sourceKey: 'registrationId',
+Customer.hasMany(Address, {
+  sourceKey: 'customerId',
   foreignKey: {
-    name: 'registrationId',
+    name: 'customerId',
     allowNull: false,
   },
   onUpdate: 'CASCADE',
   onDelete: 'RESTRICT',
 });
-Address.belongsTo(Registration, {
-  foreignKey: 'registrationId',
+Address.belongsTo(Customer, {
+  foreignKey: 'customerId',
 });
 
 module.exports = Address;

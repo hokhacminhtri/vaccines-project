@@ -1,6 +1,7 @@
 const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
 const { PRODUCT_TYPE } = require('../../constants');
 const Customer = require('./customers.model');
+const VNVCCenter = require('./vnvc-centers.model');
 
 const productTypes = [];
 for (const key in PRODUCT_TYPE) {
@@ -15,27 +16,6 @@ const Registration = mysqlDb.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    firstName: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-    },
-    lastName: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-    },
-    birthday: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    gender: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    },
-    phone: {
-      type: DataTypes.STRING(10),
-      allowNull: false,
-    },
     productId: {
       type: DataTypes.STRING(24), // vaccine hoac vaccinePackage
       allowNull: false,
@@ -48,6 +28,22 @@ const Registration = mysqlDb.define(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: new Date(),
+    },
+    relName: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    relPhone: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    relRelationship: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   { tableName: 'registration', timestamps: false, initialAutoIncrement: 1 },
@@ -65,6 +61,19 @@ Customer.hasMany(Registration, {
 });
 Registration.belongsTo(Customer, {
   foreignKey: 'customerId',
+});
+
+VNVCCenter.hasMany(Registration, {
+  sourceKey: 'centerId',
+  foreignKey: {
+    name: 'centerId',
+    allowNull: false,
+  },
+  onUpdate: 'CASCADE',
+  onDelete: 'RESTRICT',
+});
+Registration.belongsTo(VNVCCenter, {
+  foreignKey: 'centerId',
 });
 
 module.exports = Registration;

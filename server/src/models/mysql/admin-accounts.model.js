@@ -17,6 +17,10 @@ const AdminAccount = mysqlDb.define(
       type: DataTypes.STRING(72),
       allowNull: false,
     },
+    role: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   { tableName: 'adminAccounts', timestamps: true, initialAutoIncrement: 1 },
 );
