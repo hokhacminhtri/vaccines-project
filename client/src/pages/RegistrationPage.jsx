@@ -1,6 +1,7 @@
 import Container from '@mui/material/Container';
 import React from 'react';
 import Registration from '../components/Registration';
+import AddressContextProvider from '../contexts/addressContext';
 import usePageTitle from '../hooks/usePageTitle';
 
 export default function RegistrationPage() {
@@ -8,7 +9,9 @@ export default function RegistrationPage() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 2 }}>
-      <Registration />
+      <AddressContextProvider>
+        <Registration />
+      </AddressContextProvider>
     </Container>
   );
 }

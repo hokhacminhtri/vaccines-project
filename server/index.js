@@ -7,6 +7,8 @@ const app = express();
 const { mysqlDb } = require('./src/configs/sequelize.config');
 const corsOptions = require('./src/configs/cors.config');
 const vaccineApi = require('./src/apis/vaccine.api');
+const addressApi = require('./src/apis/address.api');
+const morgan = require('morgan');
 
 // import MySQL models
 const Province = require('./src/models/mysql/provinces.model');
@@ -26,6 +28,7 @@ const VaccinePackage = require('./src/models/mongoose/vaccine-packages.model');
 const Vaccine = require('./src/models/mongoose/vaccines.model');
 
 app.use(cors(corsOptions));
+app.use(morgan('tiny'));
 
 // ==================== CONNECT MONGODB ====================
 mongoose
@@ -40,6 +43,7 @@ mongoose
 
 // ==================== API ====================\
 app.use('/vaccine', vaccineApi);
+app.use('/address', addressApi);
 
 // ==================== LISTENING ====================
 const normalizePort = (port) => parseInt(port, 10);

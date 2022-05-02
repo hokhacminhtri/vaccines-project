@@ -1,8 +1,8 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import React, { useState } from 'react';
-import useGetProvinces from '../../hooks/useGetProvinces';
+import React, { useContext, useState } from 'react';
+import { AddressContext } from '../../contexts/addressContext';
 
 // Dummy data
 const dummyCenterList = [
@@ -17,16 +17,18 @@ const dummyCenterList = [
 ];
 
 export default function CenterAddressSelect() {
-  const provinces = useGetProvinces();
+  const { provinces } = useContext(AddressContext);
   const [centerList, setCenterList] = useState([]);
   const provinceOptions = provinces.map((p) => ({ ...p, label: p.name }));
 
   const onProvinceChange = (e, province) => {
-    const provinceId = Number(province.provinceId);
+    if (province) {
+      const provinceId = Number(province.provinceId);
 
-    // Find center list by provinceId (call API)
-    const centers = dummyCenterList.filter((i) => i.value === provinceId);
-    setCenterList(centers);
+      // Find center list by provinceId (call API)
+      const centers = dummyCenterList.filter((i) => i.value === provinceId);
+      setCenterList(centers);
+    }
   };
 
   const onCenterChange = (e, center) => {
@@ -43,8 +45,10 @@ export default function CenterAddressSelect() {
           size="small"
           fullWidth
           disablePortal
+          disableClearable
           options={provinceOptions}
           onChange={onProvinceChange}
+          isOptionEqualToValue={(o, v) => o.provinceId === v.provinceId}
           renderInput={(params) => (
             <TextField {...params} placeholder="Chọn Tỉnh / Thành" />
           )}
@@ -57,6 +61,7 @@ export default function CenterAddressSelect() {
           size="small"
           fullWidth
           disablePortal
+          disableClearable
           options={centerList}
           onChange={onCenterChange}
           renderInput={(params) => (

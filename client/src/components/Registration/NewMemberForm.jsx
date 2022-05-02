@@ -11,7 +11,7 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useRef } from 'react';
 import { GENDER, RELATIONSHIP_OPTIONS } from '../../constants';
 import AddressSelect from '../AddressSelect';
 
@@ -36,6 +36,11 @@ function Label({ id, children, isRequired = true }) {
 }
 
 export default function NewMemberForm() {
+  const addressRef = useRef(null);
+  const onAddressSelect = (value) => {
+    addressRef.current = value;
+  };
+
   return (
     <Grid container spacing={2}>
       {/* Fullname */}
@@ -103,7 +108,7 @@ export default function NewMemberForm() {
       <Grid item xs={12}>
         <Stack spacing={1}>
           <Label id="province">Địa chỉ</Label>
-          <AddressSelect />
+          <AddressSelect onFullSelect={onAddressSelect} />
         </Stack>
       </Grid>
       <Grid item xs={12}>
