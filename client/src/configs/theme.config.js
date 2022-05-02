@@ -13,13 +13,13 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#005bbb',
+      main: '#4d63a6',
     },
     secondary: {
-      main: '#fff',
+      main: '#2a388f',
     },
     accent: {
-      main: '#ffd500',
+      main: '#ff9900',
     },
   },
 });
