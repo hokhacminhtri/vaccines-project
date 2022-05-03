@@ -2,7 +2,7 @@ const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
 const Province = require('./provinces.model');
 
 const VNVCCenter = mysqlDb.define(
-  'vnvcCenter',
+  'vnvcCenters',
   {
     centerId: {
       type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ const VNVCCenter = mysqlDb.define(
       allowNull: false,
     },
   },
-  { tableName: 'vnvcCenter', timestamps: false },
+  { tableName: 'vnvcCenters', timestamps: false },
 );
 
 // Foreign key

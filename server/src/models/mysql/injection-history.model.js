@@ -32,7 +32,7 @@ Registration.hasMany(InjectionHistory, {
   onDelete: 'RESTRICT',
 });
 InjectionHistory.belongsTo(Registration, {
-  sourceKey: 'registrationId',
+  foreignKey: 'registrationId',
 });
 
 module.exports = InjectionHistory;
