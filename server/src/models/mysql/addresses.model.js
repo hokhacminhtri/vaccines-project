@@ -32,7 +32,7 @@ Address.belongsTo(Ward, {
   foreignKey: 'wardId',
 });
 
-Customer.hasMany(Address, {
+Customer.hasOne(Address, {
   sourceKey: 'customerId',
   foreignKey: {
     name: 'customerId',

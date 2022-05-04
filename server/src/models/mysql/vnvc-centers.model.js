@@ -1,5 +1,5 @@
 const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
-const Province = require('./provinces.model');
+const Address = require('./addresses.model');
 
 const VNVCCenter = mysqlDb.define(
   'vnvcCenters',
@@ -12,22 +12,33 @@ const VNVCCenter = mysqlDb.define(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+    phone: {
+      type: DataTypes.STRING(10),
+      allowNull: false,
+    },
+    openingTime: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
+    closingTime: {
+      type: DataTypes.TIME,
+    },
   },
   { tableName: 'vnvcCenters', timestamps: false },
 );
 
 // Foreign key
-Province.hasMany(VNVCCenter, {
-  sourceKey: 'provinceId',
+Address.hasMany(VNVCCenter, {
+  sourceKey: 'addressId',
   foreignKey: {
-    name: 'provinceId',
+    name: 'addressId',
     allowNull: false,
   },
   onUpdate: 'CASCADE',
   onDelete: 'RESTRICT',
 });
-VNVCCenter.belongsTo(Province, {
-  foreignKey: 'provinceId',
+VNVCCenter.belongsTo(Address, {
+  foreignKey: 'addressId',
 });
 
 module.exports = VNVCCenter;
