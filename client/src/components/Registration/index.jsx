@@ -76,6 +76,7 @@ export default function Registration({ onSubmit }) {
 
   const onSubmitForm = () => {
     const value = {
+      isRegistered,
       contactInfo: contactInfo.current,
       vaccine: vaccine.current,
       center: center.current,

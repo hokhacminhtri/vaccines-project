@@ -25,6 +25,7 @@ export default function AddressSelect({ onFullSelect }) {
         setDistricts(districtOptions);
         setProvinceId(id);
         setDistrictId(null);
+        onFullSelect({ provinceId: id, districtId: null, wardId: null });
       }
     }
   };
@@ -41,6 +42,7 @@ export default function AddressSelect({ onFullSelect }) {
         }));
         setWards(wardOptions);
         setDistrictId(id);
+        onFullSelect({ provinceId, districtId: id, wardId: null });
       }
     }
   };
