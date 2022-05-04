@@ -1,7 +1,9 @@
 import Container from '@mui/material/Container';
 import React, { useState } from 'react';
+import customerApi from '../apis/customerApi';
 import Toast from '../components/commons/Toast';
 import Registration from '../components/Registration';
+import RegistrationSuccessResult from '../components/Registration/RegistrationSuccessResult';
 import { GENDER, RELATIONSHIP_OPTIONS } from '../constants';
 import { MAX } from '../constants/validation';
 import AddressContextProvider from '../contexts/addressContext';
@@ -80,8 +82,10 @@ function verifyContactInfo(info) {
 
 export default function RegistrationPage() {
   usePageTitle('Đăng ký tiêm chủng');
+
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const verifyResult = (result) => {
     const [isValid, errorMsg] = result;
@@ -125,11 +129,22 @@ export default function RegistrationPage() {
   };
 
   const onSubmit = async (value) => {
-    setIsSubmitting(true);
     const isValid = verifyForm(value);
-    console.log(isValid);
+    if (!isValid) return;
 
-    setIsSubmitting(false);
+    setIsSubmitting(true);
+
+    try {
+      const apiRes = await customerApi.postRegistration({ ...value });
+      if (apiRes.status === 200) {
+        setIsSuccess(true);
+      }
+    } catch (error) {
+      console.log(error);
+      setError('Đăng ký thất bại, thử lại !');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -137,12 +152,17 @@ export default function RegistrationPage() {
       maxWidth="lg"
       sx={{ py: 2 }}
       className={isSubmitting ? 'disabled' : ''}>
-      {/* Show Error */}
-      <Toast message={error} onClose={() => setError(null)} />
-
-      <AddressContextProvider>
-        <Registration onSubmit={onSubmit} />
-      </AddressContextProvider>
+      {isSuccess ? (
+        <RegistrationSuccessResult />
+      ) : (
+        <>
+          {/* Show Error */}
+          <Toast message={error} onClose={() => setError(null)} />
+          <AddressContextProvider>
+            <Registration onSubmit={onSubmit} />
+          </AddressContextProvider>
+        </>
+      )}
     </Container>
   );
 }
