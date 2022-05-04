@@ -1,5 +1,6 @@
 const District = require('../models/mysql/districts.model');
 const Province = require('../models/mysql/provinces.model');
+const VNVCCenter = require('../models/mysql/vnvc-centers.model');
 const Ward = require('../models/mysql/wards.model');
 
 exports.getAllProvinces = async (req, res) => {
@@ -38,6 +39,20 @@ exports.getWardsByDistrictId = async (req, res) => {
     return res.status(200).json(wards);
   } catch (error) {
     console.error('Function getWardsByDistrictId Error: ', error);
+    return res.status(500).json();
+  }
+};
+
+exports.getCenterListByProvinceId = async (req, res) => {
+  try {
+    const provinceId = Number(req.params.provinceId);
+    const centerList = await VNVCCenter.findAll({
+      raw: true,
+      where: { provinceId },
+    });
+    return res.status(200).json(centerList);
+  } catch (error) {
+    console.error('Function getCenterListByProvinceId Error: ', error);
     return res.status(500).json();
   }
 };

@@ -10,5 +10,9 @@ addressApi.get(
   '/ward/by-district/:districtId',
   addressController.getWardsByDistrictId,
 );
+addressApi.get(
+  '/center-list/:provinceId',
+  addressController.getCenterListByProvinceId,
+);
 
 module.exports = addressApi;

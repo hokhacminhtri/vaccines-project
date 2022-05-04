@@ -1,6 +1,5 @@
 import InfoIcon from '@mui/icons-material/Info';
 import {
-  Autocomplete,
   FormControlLabel,
   Grid,
   InputAdornment,
@@ -11,8 +10,8 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import React, { useRef } from 'react';
-import { GENDER, RELATIONSHIP_OPTIONS } from '../../constants';
+import React from 'react';
+import { GENDER } from '../../constants';
 import AddressSelect from '../AddressSelect';
 
 const PHONE_TOOLTIP =
@@ -35,19 +34,24 @@ function Label({ id, children, isRequired = true }) {
   );
 }
 
-export default function NewMemberForm() {
-  const addressRef = useRef(null);
-  const onAddressSelect = (value) => {
-    addressRef.current = value;
-  };
-
+export default function NewMemberForm({
+  onInfoChange,
+  onAddressSelect,
+  onAddressChange,
+}) {
   return (
     <Grid container spacing={2}>
       {/* Fullname */}
       <Grid item xs={12} md={6}>
         <Stack spacing={1}>
-          <Label id="fullname">Họ tên người tiêm</Label>
-          <TextField id="fullname" variant="outlined" size="small" autoFocus />
+          <Label id="fullName">Họ tên người tiêm</Label>
+          <TextField
+            id="fullName"
+            variant="outlined"
+            size="small"
+            autoFocus
+            onChange={(e) => onInfoChange('fullName', e.target.value)}
+          />
         </Stack>
       </Grid>
 
@@ -60,6 +64,7 @@ export default function NewMemberForm() {
             variant="outlined"
             size="small"
             type="date"
+            onChange={(e) => onInfoChange('birthday', e.target.value)}
           />
         </Stack>
       </Grid>
@@ -72,6 +77,7 @@ export default function NewMemberForm() {
             id="phone"
             variant="outlined"
             size="small"
+            onChange={(e) => onInfoChange('phone', e.target.value)}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end" className="cursor-pointer">
@@ -89,7 +95,11 @@ export default function NewMemberForm() {
       <Grid item xs={12} md={6}>
         <Stack spacing={1}>
           <Label id="gender">Giới tính</Label>
-          <RadioGroup id="gender" row defaultValue={GENDER.MALE}>
+          <RadioGroup
+            id="gender"
+            row
+            defaultValue={GENDER.MALE}
+            onChange={(e, value) => onInfoChange('gender', Number(value))}>
             <FormControlLabel
               value={GENDER.MALE}
               control={<Radio />}
@@ -114,51 +124,11 @@ export default function NewMemberForm() {
       <Grid item xs={12}>
         <Stack spacing={1}>
           <Label id="addrDetail">Số nhà, tên đường</Label>
-          <TextField id="addrDetail" variant="outlined" size="small" />
-        </Stack>
-      </Grid>
-
-      {/* Relative info */}
-      <Grid item xs={12}>
-        <Typography
-          mt={3}
-          component="h4"
-          variant="inherit"
-          textTransform="uppercase"
-          color="grey.600">
-          Thông tin liên hệ
-        </Typography>
-      </Grid>
-
-      {/* Relative name */}
-      <Grid item xs={12} md={6}>
-        <Stack spacing={1}>
-          <Label id="relativeName">Họ tên người liên hệ</Label>
-          <TextField id="relativeName" variant="outlined" size="small" />
-        </Stack>
-      </Grid>
-
-      {/* Relative Phone */}
-      <Grid item xs={12} md={6}>
-        <Stack spacing={1}>
-          <Label id="relativePhone">Số điện thoại người liên hệ</Label>
-          <TextField id="relativePhone" variant="outlined" size="small" />
-        </Stack>
-      </Grid>
-
-      {/* Relationship */}
-      <Grid item xs={12} md={6}>
-        <Stack spacing={1}>
-          <Label id="relationship">Mối quan hệ</Label>
-          <Autocomplete
-            disablePortal
-            options={RELATIONSHIP_OPTIONS}
+          <TextField
+            id="addrDetail"
+            variant="outlined"
             size="small"
-            fullWidth
-            onChange={() => {}}
-            renderInput={(params) => (
-              <TextField {...params} placeholder="Chọn" />
-            )}
+            onChange={(e) => onAddressChange(e.target.value)}
           />
         </Stack>
       </Grid>

@@ -2,39 +2,29 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import React, { useContext, useState } from 'react';
+import addressApi from '../../apis/addressApi';
 import { AddressContext } from '../../contexts/addressContext';
 
-// Dummy data
-const dummyCenterList = [
-  {
-    value: 1,
-    label: 'VNVC Cao Lãnh',
-  },
-  {
-    value: 2,
-    label: 'VNVC Đống Đa',
-  },
-];
-
-export default function CenterAddressSelect() {
+export default function CenterAddressSelect({ onSelect }) {
   const { provinces } = useContext(AddressContext);
   const [centerList, setCenterList] = useState([]);
   const provinceOptions = provinces.map((p) => ({ ...p, label: p.name }));
 
-  const onProvinceChange = (e, province) => {
+  const onProvinceChange = async (e, province) => {
     if (province) {
       const provinceId = Number(province.provinceId);
-
-      // Find center list by provinceId (call API)
-      const centers = dummyCenterList.filter((i) => i.value === provinceId);
-      setCenterList(centers);
+      const apiRes = await addressApi.getCenterListByProvinceId(provinceId);
+      if (apiRes.status === 200) {
+        const centerOptions = apiRes.data.map((i) => ({ ...i, label: i.name }));
+        setCenterList(centerOptions);
+        onSelect(null);
+      }
     }
   };
 
   const onCenterChange = (e, center) => {
     const centerId = Number(center.centerId);
-    console.log(centerId);
-    // ...
+    onSelect(centerId);
   };
 
   return (

@@ -1,21 +1,8 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import React, { useEffect, useRef, useState } from 'react';
-
-// Dummy data
-const dummyVaccines = [
-  {
-    label: 'VẮC XIN PHÒNG VIÊM GAN A - AVAXIM 80U',
-    id: 1,
-  },
-];
-const dummyVaccinePackages = [
-  {
-    label:
-      'GÓI VẮC XIN CHO PHỤ NỮ CHUẨN BỊ TRƯỚC MANG THAI (BOOSTRIX+VGB) GÓI 3',
-    id: 1,
-  },
-];
+import vaccineApi from '../../apis/vaccineApi';
+import vaccinePackageApi from '../../apis/vaccinePackageApi';
 
 export default function VaccineSelect({ isPackage = false, onChange }) {
   const [options, setOptions] = useState([]);
@@ -26,15 +13,38 @@ export default function VaccineSelect({ isPackage = false, onChange }) {
   useEffect(() => {
     if (isPackage) {
       if (vaccinePackages.current) {
-        return setOptions(vaccinePackages.current);
+        setOptions(vaccinePackages.current);
+      } else {
+        (async function () {
+          const apiRes = await vaccinePackageApi.getAllPackages({
+            select: 'name',
+          });
+          if (apiRes.status === 200) {
+            const packageOptions = apiRes.data.map((v) => ({
+              ...v,
+              label: v.name,
+            }));
+            vaccinePackages.current = packageOptions;
+            setOptions(packageOptions);
+          }
+        })();
       }
-
-      setOptions(dummyVaccinePackages);
     } else {
       if (vaccines.current) {
-        return setOptions(vaccines.current);
+        setOptions(vaccines.current);
+      } else {
+        (async function () {
+          const apiRes = await vaccineApi.getAllVaccines({ select: 'name' });
+          if (apiRes.status === 200) {
+            const vaccineOptions = apiRes.data.map((v) => ({
+              ...v,
+              label: v.name,
+            }));
+            vaccines.current = vaccineOptions;
+            setOptions(vaccineOptions);
+          }
+        })();
       }
-      setOptions(dummyVaccines);
     }
     return () => {};
   }, [isPackage]);
@@ -42,10 +52,11 @@ export default function VaccineSelect({ isPackage = false, onChange }) {
   return (
     <Autocomplete
       disablePortal
+      disableClearable
       options={options}
       size="small"
       fullWidth
-      onChange={onChange}
+      onChange={(e, value) => onChange(value._id)}
       renderInput={(params) => (
         <TextField
           {...params}

@@ -12,6 +12,9 @@ const addressApi = {
   getWardsByDistrictId: (districtId) => {
     return axiosClient.get(`${URL}/ward/by-district/${districtId}`);
   },
+  getCenterListByProvinceId: (provinceId = 0) => {
+    return axiosClient.get(`${URL}/center-list/${provinceId}`);
+  },
 };
 
 export default addressApi;

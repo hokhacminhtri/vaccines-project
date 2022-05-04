@@ -26,6 +26,8 @@ const InjectionHistory = require('./src/models/mysql/injection-history.model');
 const Category = require('./src/models/mongoose/categories.model');
 const VaccinePackage = require('./src/models/mongoose/vaccine-packages.model');
 const Vaccine = require('./src/models/mongoose/vaccines.model');
+const vaccinePackageApi = require('./src/apis/vaccine-package.api');
+const customerApi = require('./src/apis/customer.api');
 
 app.use(cors(corsOptions));
 app.use(morgan('tiny'));
@@ -41,9 +43,11 @@ mongoose
     process.exit(1);
   });
 
-// ==================== API ====================\
-app.use('/vaccine', vaccineApi);
+// ==================== API ====================
 app.use('/address', addressApi);
+app.use('/customer', customerApi);
+app.use('/vaccine-package', vaccinePackageApi);
+app.use('/vaccine', vaccineApi);
 
 // ==================== LISTENING ====================
 const normalizePort = (port) => parseInt(port, 10);
