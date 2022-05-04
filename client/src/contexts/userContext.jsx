@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const userContextDefaultValue = {
   username: '',
-  isAuth: true,
+  isAuth: false,
   onChangeIsAuth: () => {},
 };
 

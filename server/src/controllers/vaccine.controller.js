@@ -2,7 +2,8 @@ const Vaccine = require('../models/mongoose/vaccines.model');
 
 exports.getAllVaccines = async (req, res) => {
   try {
-    const vaccines = await Vaccine.find({});
+    const { select = '' } = req.query;
+    const vaccines = await Vaccine.find({}).select(select);
     return res.status(200).json(vaccines);
   } catch (error) {
     console.error('getAllVaccines ERROR: ', error);

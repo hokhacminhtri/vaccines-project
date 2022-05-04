@@ -20,14 +20,12 @@ import { MAX } from '../../../constants/validation';
 import '../../../styles/admin/login.css';
 import useStyle from './style';
 
-function concatErrorMessage(errors = {}) {
-  let message = '';
+function chooseErrorMessage(errors = {}) {
   for (const field in errors) {
     if (errors[field]?.message) {
-      message += ` ${errors[field].message}`;
+      return errors[field].message;
     }
   }
-  return message;
 }
 
 const schema = yup.object({
@@ -72,7 +70,7 @@ export default function AdminLoginForm({ onSubmit }) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={3}>
             {Object.keys(errors).length > 0 && (
-              <Alert severity="error">{concatErrorMessage(errors)}</Alert>
+              <Alert severity="error">{chooseErrorMessage(errors)}</Alert>
             )}
 
             <TextField

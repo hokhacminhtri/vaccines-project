@@ -7,6 +7,8 @@ const app = express();
 const { mysqlDb } = require('./src/configs/sequelize.config');
 const corsOptions = require('./src/configs/cors.config');
 const vaccineApi = require('./src/apis/vaccine.api');
+const addressApi = require('./src/apis/address.api');
+const morgan = require('morgan');
 
 // import MySQL models
 const Province = require('./src/models/mysql/provinces.model');
@@ -24,8 +26,17 @@ const InjectionHistory = require('./src/models/mysql/injection-history.model');
 const Category = require('./src/models/mongoose/categories.model');
 const VaccinePackage = require('./src/models/mongoose/vaccine-packages.model');
 const Vaccine = require('./src/models/mongoose/vaccines.model');
+const vaccinePackageApi = require('./src/apis/vaccine-package.api');
+const customerApi = require('./src/apis/customer.api');
 
 app.use(cors(corsOptions));
+app.use(morgan('tiny'));
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+);
 
 // ==================== CONNECT MONGODB ====================
 mongoose
@@ -38,7 +49,10 @@ mongoose
     process.exit(1);
   });
 
-// ==================== API ====================\
+// ==================== API ====================
+app.use('/address', addressApi);
+app.use('/customer', customerApi);
+app.use('/vaccine-package', vaccinePackageApi);
 app.use('/vaccine', vaccineApi);
 
 // ==================== LISTENING ====================
