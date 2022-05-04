@@ -22,6 +22,10 @@ const vaccinesSchema = new Schema({
     type: String,
     required: true,
   },
+  avt: {
+    type: String,
+    required: true,
+  },
   products: [
     {
       mfg: {

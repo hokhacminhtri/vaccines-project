@@ -1,6 +1,5 @@
 const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
 const Ward = require('./wards.model');
-const Customer = require('./customers.model');
 
 const Address = mysqlDb.define(
   'addresses',
@@ -30,19 +29,6 @@ Ward.hasMany(Address, {
 });
 Address.belongsTo(Ward, {
   foreignKey: 'wardId',
-});
-
-Customer.hasOne(Address, {
-  sourceKey: 'customerId',
-  foreignKey: {
-    name: 'customerId',
-    allowNull: false,
-  },
-  onUpdate: 'CASCADE',
-  onDelete: 'RESTRICT',
-});
-Address.belongsTo(Customer, {
-  foreignKey: 'customerId',
 });
 
 module.exports = Address;

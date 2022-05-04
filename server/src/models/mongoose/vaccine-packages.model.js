@@ -18,6 +18,10 @@ const vaccinePackagesSchema = new Schema({
     type: Number,
     required: true,
   },
+  avt: {
+    type: String,
+    required: true,
+  },
   categoryId: {
     type: Schema.Types.ObjectId,
     required: true,
