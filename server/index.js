@@ -31,6 +31,12 @@ const customerApi = require('./src/apis/customer.api');
 
 app.use(cors(corsOptions));
 app.use(morgan('tiny'));
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+);
 
 // ==================== CONNECT MONGODB ====================
 mongoose
