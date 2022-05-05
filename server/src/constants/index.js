@@ -7,4 +7,9 @@ module.exports = {
   REGISTRATION_STATUS: {
     WAITING: 0,
   },
+
+  GENDER: {
+    MALE: false,
+    FEMALE: true,
+  },
 };

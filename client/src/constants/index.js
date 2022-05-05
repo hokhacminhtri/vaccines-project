@@ -1,6 +1,6 @@
 export const GENDER = {
-  MALE: 0,
-  FEMALE: 1,
+  MALE: false,
+  FEMALE: true,
 };
 
 export const RELATIONSHIP_OPTIONS = [

@@ -1,4 +1,5 @@
 const { DataTypes, mysqlDb } = require('../../configs/sequelize.config');
+const { GENDER } = require('../../constants');
 const Address = require('./addresses.model');
 
 const Customer = mysqlDb.define(
@@ -24,7 +25,7 @@ const Customer = mysqlDb.define(
     gender: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false, // nam
+      defaultValue: GENDER.FEMALE,
     },
     phone: {
       type: DataTypes.STRING(10),

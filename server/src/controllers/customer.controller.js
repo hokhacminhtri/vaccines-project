@@ -2,6 +2,7 @@ const Customer = require('../models/mysql/customers.model');
 const mongoose = require('mongoose');
 const Registration = require('../models/mysql/registration.model');
 const { PRODUCT_TYPE, REGISTRATION_STATUS } = require('../constants');
+const Address = require('../models/mysql/addresses.model');
 
 exports.getInfoByMemberCode = async (req, res) => {
   try {
@@ -40,15 +41,31 @@ exports.postRegistration = async (req, res) => {
         throw new Error('Mã thành viên không hợp lệ');
       }
     } else {
+      const {
+        fullName,
+        birthday,
+        gender,
+        phone,
+        provinceId,
+        districtId,
+        wardId,
+        addrDetail,
+      } = info;
+      // create address
+      const address = await Address.create({
+        wardId,
+        detail: addrDetail,
+      });
+
       // Create a customer
       const code = mongoose.Types.ObjectId().toString().slice(0, 12);
-      const { fullName, birthday, gender, phone } = info;
       const customer = await Customer.create({
         code,
         fullName,
         birthday: new Date(birthday),
         gender: Boolean(gender),
         phone,
+        addressId: address.addressId,
       });
 
       if (customer) {

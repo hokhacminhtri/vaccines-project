@@ -10,7 +10,7 @@ const Address = mysqlDb.define(
       autoIncrement: true,
     },
     detail: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(256),
       allowNull: false,
     },
   },

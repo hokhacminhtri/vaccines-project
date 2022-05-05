@@ -70,7 +70,7 @@ function verifyContactInfo(info) {
   }
 
   if (
-    !relRelationship ||
+    relRelationship === null ||
     relRelationship < 0 ||
     relRelationship >= RELATIONSHIP_OPTIONS.length
   ) {
