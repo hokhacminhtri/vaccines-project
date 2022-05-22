@@ -12,4 +12,7 @@ module.exports = {
     MALE: false,
     FEMALE: true,
   },
+
+  JWT_SECRET: process.env.JWT_SECRET || 'vaccine',
+  JWT_EXP: 3 * 86400,
 };

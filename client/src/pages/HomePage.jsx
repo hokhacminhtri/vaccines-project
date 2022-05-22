@@ -10,7 +10,7 @@ export default function HomePage() {
 
   useEffect(() => {
     (async function () {
-      const vaccineList = await vaccineApi.getAllVaccines();
+      const vaccineList = await vaccineApi.getAllVaccines({});
       setVaccines([...vaccineList.data]);
     })();
     return () => {};

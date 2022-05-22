@@ -3,6 +3,8 @@ export const GENDER = {
   FEMALE: true,
 };
 
+export const ACCESS_TOKEN_LS_KEY = 'access_token';
+
 export const RELATIONSHIP_OPTIONS = [
   'Bản thân',
   'Con',
