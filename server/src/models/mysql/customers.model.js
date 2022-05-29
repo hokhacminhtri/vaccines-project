@@ -15,7 +15,7 @@ const Customer = mysqlDb.define(
       allowNull: false,
     },
     code: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
     birthday: {

@@ -3,6 +3,8 @@ import vaccineApi from '../apis/vaccineApi';
 import Navbar from '../components/Navbar';
 import Vaccine from '../components/Vaccine';
 import { UserContext } from '../contexts/userContext';
+import Footer from '../components/Footer';
+
 
 export default function HomePage() {
   const [vaccines, setVaccines] = useState([]);
@@ -23,6 +25,7 @@ export default function HomePage() {
       {vaccines.map((vaccine, index) => (
         <Vaccine key={index} name={vaccine.name} price={vaccine.price} />
       ))}
+      <Footer/>
     </>
   );
 }
