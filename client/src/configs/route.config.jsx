@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     element: <HomePage />,
-    isProtected: true,
+    isProtected: false,
   },
   {
     path: '/admin/login',

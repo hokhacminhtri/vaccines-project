@@ -3,6 +3,7 @@ html, body {
   box-sizing: border-box;
   padding: 0;
   overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
