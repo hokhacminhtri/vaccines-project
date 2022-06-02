@@ -6,6 +6,9 @@ const vaccineApi = {
   getAllVaccines: ({ select = '' }) => {
     return axiosClient.get(`${URL}/all`, { params: { select } });
   },
+  getVaccineList: ({ select = '', sort = 'price', page = 1 }) => {
+    return axiosClient.get(`${URL}/list`, { params: { select, sort, page } });
+  },
 };
 
 export default vaccineApi;
