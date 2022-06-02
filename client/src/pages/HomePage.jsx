@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 import { UserContext } from '../contexts/userContext';
 
 export default function HomePage() {
@@ -8,7 +8,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Navbar />
+      <Header />
     </>
   );
 }

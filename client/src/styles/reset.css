@@ -8,4 +8,5 @@ html, body {
 
 a {
   text-decoration: unset;
+  color: unset;
 }
