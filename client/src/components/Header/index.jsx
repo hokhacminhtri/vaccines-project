@@ -285,7 +285,6 @@ function Menubar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   function handleOpenMenu(event, id) {
-    console.log(111);
     if (anchorEl !== event.currentTarget) {
       setAnchorEl({ id, target: event.currentTarget });
     }
