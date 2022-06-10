@@ -16,8 +16,6 @@ import useStyle from './style';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-console.log(theme.palette);
-
 const images = [
   {
     label: 'SaleOff01',
