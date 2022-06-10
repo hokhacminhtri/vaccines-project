@@ -71,7 +71,7 @@ export default function VaccineDetail({
           />
         </Box>
 
-        <Box my={2} id="info"></Box>
+        <Box my={2} id="info" color="grey.700"></Box>
       </Grid>
     </Grid>
   );
