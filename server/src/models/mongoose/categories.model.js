@@ -7,6 +7,18 @@ const categoriesSchema = new Schema({
     required: true,
     unique: true,
   },
+  vaccines: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Vaccine',
+    },
+  ],
+  vaccinePackages: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'VaccinePackage',
+    },
+  ],
 });
 
 const Category = mongoose.model('Category', categoriesSchema, 'categories');

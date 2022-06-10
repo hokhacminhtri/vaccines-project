@@ -4,6 +4,9 @@ import HomePage from '../pages/HomePage';
 const LoginPage = React.lazy(() => import('../pages/admin/LoginPage'));
 const RegistrationPage = React.lazy(() => import('../pages/RegistrationPage'));
 const VaccinePage = React.lazy(() => import('../pages/VaccinePage'));
+const VaccineDetailPage = React.lazy(() =>
+  import('../pages/VaccineDetailPage'),
+);
 
 const routes = [
   {
@@ -24,6 +27,11 @@ const routes = [
   {
     path: '/vaccine',
     element: <VaccinePage />,
+    isProtected: false,
+  },
+  {
+    path: '/vaccine/:vaccineId',
+    element: <VaccineDetailPage />,
     isProtected: false,
   },
 ];

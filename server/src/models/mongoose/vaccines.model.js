@@ -42,22 +42,10 @@ const vaccinesSchema = new Schema({
       },
     },
   ],
-  info: [
-    {
-      label: {
-        type: String,
-        required: true,
-      },
-      title: {
-        type: String,
-        required: true,
-      },
-      detail: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  info: {
+    type: String,
+    required: false,
+  },
   categories: [
     {
       categoryId: {
@@ -65,6 +53,7 @@ const vaccinesSchema = new Schema({
         required: true,
         ref: 'Category',
       },
+      name: String,
     },
   ],
 });

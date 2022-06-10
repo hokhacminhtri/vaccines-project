@@ -31,3 +31,14 @@ exports.getVaccineList = async (req, res) => {
     return res.status(500).json();
   }
 };
+
+exports.getVaccineInfo = async (req, res) => {
+  try {
+    const { vaccineId } = req.params;
+    const vaccine = await Vaccine.findOne({ _id: vaccineId });
+    return res.status(200).json(vaccine);
+  } catch (error) {
+    console.error('Function getVaccineInfo Error: ', error);
+    return res.status(500).json();
+  }
+};
