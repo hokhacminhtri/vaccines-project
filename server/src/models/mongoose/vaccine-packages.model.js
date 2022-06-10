@@ -22,10 +22,13 @@ const vaccinePackagesSchema = new Schema({
     type: String,
     required: true,
   },
-  categoryId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: 'Category',
+  categories: {
+    categoryId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'Category',
+    },
+    name: String,
   },
   vaccines: [
     {
