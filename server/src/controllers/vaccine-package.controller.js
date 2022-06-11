@@ -31,3 +31,17 @@ exports.getPackageList = async (req, res) => {
     return res.status(500).json();
   }
 };
+
+exports.getPackageInfo = async (req, res) => {
+  try {
+    const { packageId } = req.params;
+    const package = await VaccinePackage.findOne({ _id: packageId }).populate({
+      path: 'vaccines.vaccineId',
+      select: 'name country price concept avt',
+    });
+    return res.status(200).json(package);
+  } catch (error) {
+    console.error('Function getPackageInfo Error: ', error);
+    return res.status(500).json();
+  }
+};
