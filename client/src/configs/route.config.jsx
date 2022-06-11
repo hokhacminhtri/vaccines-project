@@ -7,6 +7,9 @@ const VaccinePage = React.lazy(() => import('../pages/VaccinePage'));
 const VaccineDetailPage = React.lazy(() =>
   import('../pages/VaccineDetailPage'),
 );
+const VaccinePackageDetailPage = React.lazy(() =>
+  import('../pages/VaccinePackageDetailPage'),
+);
 
 const routes = [
   {
@@ -32,6 +35,11 @@ const routes = [
   {
     path: '/vaccine/:vaccineId',
     element: <VaccineDetailPage />,
+    isProtected: false,
+  },
+  {
+    path: '/vaccine-package/:packageId',
+    element: <VaccinePackageDetailPage />,
     isProtected: false,
   },
 ];
