@@ -4,6 +4,8 @@ import HomePage from '../pages/HomePage';
 const LoginPage = React.lazy(() => import('../pages/admin/LoginPage'));
 const RegistrationPage = React.lazy(() => import('../pages/RegistrationPage'));
 const VaccinePage = React.lazy(() => import('../pages/VaccinePage'));
+const VaccinationChildren = React.lazy(() => import('../pages/VaccinationChildren'));
+const VaccinationAdults = React.lazy(() => import('../pages/VaccinationAdults'));
 const VaccineDetailPage = React.lazy(() =>
   import('../pages/VaccineDetailPage'),
 );
@@ -40,6 +42,16 @@ const routes = [
   {
     path: '/vaccine-package/:packageId',
     element: <VaccinePackageDetailPage />,
+    isProtected: false,
+  },
+  {
+    path: '/vaccination-children',
+    element: <VaccinationChildren />,
+    isProtected: false,
+  },
+  {
+    path: '/vaccination-adults',
+    element: <VaccinationAdults />,
     isProtected: false,
   },
 ];
