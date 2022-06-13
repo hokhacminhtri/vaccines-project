@@ -12,6 +12,9 @@ const vaccineApi = {
   getVaccineInfo: (vaccineId) => {
     return axiosClient.get(`${URL}/info/${vaccineId}`);
   },
+  getVaccineForHomePage: () => {
+    return axiosClient.get(`${URL}/vaccineforhomepage`);
+  },
 };
 
 export default vaccineApi;

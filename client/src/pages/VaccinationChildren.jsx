@@ -1,4 +1,4 @@
-import {Container,Grid,Card,CardMedia,Typography,CardContent} from '@mui/material';
+import {Container,Grid} from '@mui/material';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import VaccinationCard from '../components/VaccinationCard';
