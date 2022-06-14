@@ -68,3 +68,32 @@
   margin-top: 10px;
 
 }
+.bdhome h2 {
+  font-size: 20px;
+  margin: 15px 0;
+}
+.home_dv_title .view_all_dmvc {
+  position: absolute;
+  right: 16px;
+  bottom: 5px;
+  font-style: italic !important;
+  font-size: 14px;
+  padding-right: 5px;
+  color: #337ab7;
+}
+.home_dv_title span {
+  color: #2A388F;
+  display: block;
+  border-bottom: 1px solid #2A388F;
+  margin: 20px 0 0;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+.col-xs-12 {
+  width: 100%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}

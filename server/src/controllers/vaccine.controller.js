@@ -42,3 +42,14 @@ exports.getVaccineInfo = async (req, res) => {
     return res.status(500).json();
   }
 };
+
+exports.getVaccineForHomePage = async (req, res) => {
+  try {
+    const vaccine = await Vaccine.find({}).limit(8);
+    //.select({ _id: 1, name: 1, avt: 1 });
+    return res.status(200).json(vaccine);
+  } catch (error) {
+    console.error('Function getVaccineForHomePage Error: ', error);
+    return res.status(500).json();
+  }
+};
