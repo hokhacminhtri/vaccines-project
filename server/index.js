@@ -29,6 +29,7 @@ const Vaccine = require('./src/models/mongoose/vaccines.model');
 const vaccinePackageApi = require('./src/apis/vaccine-package.api');
 const customerApi = require('./src/apis/customer.api');
 const accountApi = require('./src/apis/account.api');
+const testApi = require('./src/apis/test.api');
 
 app.use(cors(corsOptions));
 app.use(morgan('tiny'));
@@ -56,6 +57,7 @@ app.use('/customer', customerApi);
 app.use('/vaccine-package', vaccinePackageApi);
 app.use('/vaccine', vaccineApi);
 app.use('/account', accountApi);
+app.use('/v1/test', testApi);
 
 // ==================== LISTENING ====================
 const normalizePort = (port) => parseInt(port, 10);
