@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
+
 const { mysqlDb } = require('./src/configs/sequelize.config');
 const corsOptions = require('./src/configs/cors.config');
 const vaccineApi = require('./src/apis/vaccine.api');
@@ -30,6 +31,7 @@ const vaccinePackageApi = require('./src/apis/vaccine-package.api');
 const customerApi = require('./src/apis/customer.api');
 const accountApi = require('./src/apis/account.api');
 const testApi = require('./src/apis/test.api');
+const syncMongoElasticApi = require('./src/apis/sync-mongodb-elasticsearch.api');
 
 app.use(cors(corsOptions));
 app.use(morgan('tiny'));
@@ -58,6 +60,7 @@ app.use('/vaccine-package', vaccinePackageApi);
 app.use('/vaccine', vaccineApi);
 app.use('/account', accountApi);
 app.use('/v1/test', testApi);
+app.use('/sync-mongodb-elasticsearch', syncMongoElasticApi);
 
 // ==================== LISTENING ====================
 const normalizePort = (port) => parseInt(port, 10);
