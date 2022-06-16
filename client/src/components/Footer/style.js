@@ -1,8 +1,8 @@
 import { makeStyles } from '@mui/styles';
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   footer: {
-    background: '#2a388f',
+    background: theme.palette.secondary.main,
     width: '100%',
     padding: '20px 0',
     paddingBottom: '10px',
@@ -24,7 +24,7 @@ export default makeStyles(() => ({
   },
 
   item: {
-    margin: '30px 60px',
+    margin: '30px 50px',
     paddingLeft: '10px',
   },
 
@@ -38,6 +38,15 @@ export default makeStyles(() => ({
     fontWeight: 800,
     fontSize: '18px',
     marginBottom: '10px',
+  },
+
+  label1: {
+    color: '#fff',
+    textDecoration: 'none',
+    fontWeight: 800,
+    fontSize: '18px',
+    marginBottom: '10px',
+    marginLeft: '40px',
   },
 
   number: {
@@ -69,5 +78,12 @@ export default makeStyles(() => ({
     marginLeft: '40px',
     marginRight: '40px',
     marginTop: '24px',
+  },
+
+  img: {
+    width: '30px',
+    height: '30px',
+    backgroundImage: '#4d63a6',
+    paddingRight: '10px',
   },
 }));
