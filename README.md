@@ -77,11 +77,11 @@ Báo cáo cần ghi rõ thông tin cá nhân, thông tin nhóm, đánh giá cá 
 
 ## **Use Case Diagram**
 
-![UC-Diagram](https://res.cloudinary.com/minhtri2404/image/upload/v1651142244/vaccines-project/Github-README/vaccines-project-ucdiagram.jpg)
+![UC-Diagram](https://res.cloudinary.com/minhtri2404/image/upload/v1655395470/vaccines-project/Github-README/vaccines-project-ucdiagram.jpg)
 
 ## **Databases Diagram**
 
-![DB Diagram](https://res.cloudinary.com/minhtri2404/image/upload/v1651142245/vaccines-project/Github-README/vaccines-project-schema.jpg)
+![DB Diagram](https://res.cloudinary.com/minhtri2404/image/upload/v1655395394/vaccines-project/Github-README/vaccines-project-schema.jpg)
 
 # Coding Conventions
 
@@ -102,6 +102,31 @@ Báo cáo cần ghi rõ thông tin cá nhân, thông tin nhóm, đánh giá cá 
 - Lưu đặt `try catch` trong controller để bắt lỗi (hoặc trong những hàm có connect DB). Log lỗi kèm với tên hàm.
 
 # Hướng dẫn chạy
+
+## **Cài đặt và sử dụng Elasticsearch**
+
+### Elasticsearch được sử dụng trong chức năng Tìm kiếm. Các dữ liệu cần cho tìm kiếm sẽ được đồng bộ từ MongoDB vào Elasticsearch
+
+```sh
+# Đổi {host_path} thành nơi lưu trữ dữ liệu cho Elasticsearch
+> docker run -d --name elasticsearch --net elasticsearch_network -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -v {host_path}:/usr/share/elasticsearch/data elasticsearch:8.2.2
+
+# Cài đặt Kibana để tiện thao tác với Elasticsearch (có thể sử dụng Postman để thay thế)
+> docker run -d --name kibana --net elasticsearch_network -p 5601:5601 kibana:8.2.2
+
+# Tạo token từ Elastichsearch để sử dụng cho Kibana
+> docker exec -it -u 0 elasticsearch bash
+> bin/elasticsearch-create-enrollment-token --scope kibana
+
+# Tạo verification code cho Kibana
+> docker exec -it -u 0 kibana bash
+> bin/kibana-verification-code
+
+# Reset lại password để đăng nhập Elasticsearch
+root@elasticsearch: elasticsearch-reset-password -u {username}
+
+# Có thể sử dụng Postman. Cần điền username, password vào Authorization
+```
 
 ## **Back-end (Server)**
 
