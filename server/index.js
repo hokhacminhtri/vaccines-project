@@ -31,7 +31,8 @@ const vaccinePackageApi = require('./src/apis/vaccine-package.api');
 const customerApi = require('./src/apis/customer.api');
 const accountApi = require('./src/apis/account.api');
 const testApi = require('./src/apis/test.api');
-const syncMongoElasticApi = require('./src/apis/sync-mongodb-elasticsearch.api');
+const syncVaccinesApi = require('./src/apis/sync-vaccines.api');
+const syncVaccinePackagesApi = require('./src/apis/sync-vaccine-packages.api');
 
 app.use(cors(corsOptions));
 app.use(morgan('tiny'));
@@ -60,7 +61,8 @@ app.use('/vaccine-package', vaccinePackageApi);
 app.use('/vaccine', vaccineApi);
 app.use('/account', accountApi);
 app.use('/v1/test', testApi);
-app.use('/sync-mongodb-elasticsearch', syncMongoElasticApi);
+app.use('/sync-vaccines-mongodb-elasticsearch', syncVaccinesApi);
+app.use('/sync-vaccine-packages-mongodb-elasticsearch', syncVaccinePackagesApi);
 
 // ==================== LISTENING ====================
 const normalizePort = (port) => parseInt(port, 10);
