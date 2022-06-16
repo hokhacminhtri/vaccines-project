@@ -47,7 +47,9 @@ syncVaccinePackagesApi.get('/', async (req, res) => {
           index: 'vaccine-packages',
         })
         .then(function () {
-          console.log('vaccines index elasticsearch is deleted successfully');
+          console.log(
+            'vaccine-packages index elasticsearch was deleted successfully',
+          );
           syncVaccinePackages();
         });
     } else {
