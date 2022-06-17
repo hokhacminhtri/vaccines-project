@@ -1,5 +1,9 @@
-import React from 'react';
+import { Box } from '@mui/system';
 
 export default function NotFound() {
-  return <div>404</div>;
+  return (
+    <Box fontSize={20} textAlign="center" my={5} color="grey.700">
+      404 Not Found
+    </Box>
+  );
 }
