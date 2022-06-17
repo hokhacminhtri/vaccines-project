@@ -58,6 +58,7 @@ const vaccinesSchema = new Schema({
   ],
 });
 
+vaccinesSchema.index({ name: 'text', concept: 'text', info: 'text' });
 const Vaccine = mongoose.model('Vaccine', vaccinesSchema, 'vaccines');
 
 module.exports = Vaccine;
