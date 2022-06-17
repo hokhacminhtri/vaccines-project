@@ -2,6 +2,7 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import { Suspense, useContext } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GlobalLoading from './components/commons/GlobalLoading';
+import Layout from './components/commons/Layout';
 import { renderRoutes, routes } from './configs/route.config';
 import theme from './configs/theme.config';
 import { UserContext } from './contexts/userContext';
@@ -16,10 +17,12 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Suspense fallback={<GlobalLoading />}>
-          <Routes>
-            {renderRoutes(routes, isAuth)}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Layout>
+            <Routes>
+              {renderRoutes(routes, isAuth)}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
         </Suspense>
       </ThemeProvider>
     </BrowserRouter>

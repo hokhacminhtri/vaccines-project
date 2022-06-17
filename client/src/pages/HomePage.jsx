@@ -1,11 +1,9 @@
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import {Container,Grid} from '@mui/material';
-import HomeIntroduction from '../components/HomeIntroduction';
-import usePageTitle from '../hooks/usePageTitle';
-import React, { useEffect, useState } from 'react';
+import { Container, Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
 import vaccineApi from '../apis/vaccineApi';
+import HomeIntroduction from '../components/HomeIntroduction';
 import VaccineCardHomePage from '../components/VaccineCardHomePage';
+import usePageTitle from '../hooks/usePageTitle';
 
 export default function HomePage() {
   usePageTitle('Trang chủ');
@@ -22,16 +20,17 @@ export default function HomePage() {
     return () => {
       isSubscribe = false;
     };
-  },[]);
+  }, []);
   return (
     <>
-      <Header />
       <HomeIntroduction />
-      <Container sx={{paddingBottom:5}}>
-        <div class="row">
-          <h2 class="home_dv_title position_re col-xs-12">
+      <Container sx={{ paddingBottom: 5 }}>
+        <div className="row">
+          <h2 className="home_dv_title position_re col-xs-12">
             <span>DANH MỤC VACXIN</span>
-            <a href="/vaccine" class="position_ab view_all_dmvc hidden-xs"> View all </a>
+            <a href="/vaccine" className="position_ab view_all_dmvc hidden-xs">
+              View all
+            </a>
           </h2>
         </div>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
@@ -42,8 +41,6 @@ export default function HomePage() {
           ))}
         </Grid>
       </Container>
-
-      <Footer />
     </>
   );
 }
