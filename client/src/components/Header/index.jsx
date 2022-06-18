@@ -68,7 +68,7 @@ const menuBarItems = [
   },
   {
     name: 'Tiêm chủng cho trẻ em',
-    to: '/',
+    to: '/vaccination-children',
     subMenu: [
       {
         name: 'Lịch tiêm chủng cho trẻ em',
@@ -106,7 +106,7 @@ const menuBarItems = [
   },
   {
     name: 'Tiêm chủng cho người lớn',
-    to: '/',
+    to: '/vaccination-adults',
     subMenu: [
       {
         name: 'Vì sao người lớn cần tiêm vaccine',
