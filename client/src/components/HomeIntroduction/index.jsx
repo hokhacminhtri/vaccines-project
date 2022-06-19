@@ -10,7 +10,6 @@ import SaleOff02 from '../../assets/images/SaleOff02.jpg';
 import SaleOff03 from '../../assets/images/SaleOff03.jpg';
 import SaleOff04 from '../../assets/images/SaleOff04.jpg';
 import SaleOff05 from '../../assets/images/SaleOff05.jpg';
-import SaleOff06 from '../../assets/images/SaleOff06.jpg';
 import theme from '../../configs/theme.config';
 import useStyle from './style';
 
@@ -38,11 +37,6 @@ const images = [
     imgPath: SaleOff05,
   },
 ];
-
-const bottomImage = {
-  label: 'SaleOff06',
-  imgPath: SaleOff06,
-};
 
 function SaleOff() {
   const theme = useTheme();
@@ -77,9 +71,6 @@ function SaleOff() {
             </div>
           ))}
         </AutoPlaySwipeableViews>
-        <Box paddingTop="0.25rem">
-          <img src={bottomImage.imgPath} alt={bottomImage.label} />
-        </Box>
       </Container>
     </Box>
   );
@@ -117,8 +108,8 @@ function Introduction() {
               Xem thêm
             </a>
           </Box>
-          <Box width="35rem" flexShrink={0}>
-            <img width="100%" src={introduction} alt="introduction" />
+          <Box flexShrink={0}>
+            <img height="100%" src={introduction} alt="introduction" />
           </Box>
         </Box>
       </Container>
