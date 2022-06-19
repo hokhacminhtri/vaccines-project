@@ -22,6 +22,7 @@
     "mongoose": "^6.3.0",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
+    "redis": "^4.1.0",
     "sequelize": "^6.19.0"
   },
   "devDependencies": {
