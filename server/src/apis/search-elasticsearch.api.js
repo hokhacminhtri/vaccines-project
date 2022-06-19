@@ -1,15 +1,5 @@
 const searchElasticApi = require('express').Router();
 const axios = require('axios');
-const { Client } = require('@elastic/elasticsearch');
-
-// Connect Elasticsearch
-const client = new Client({
-  node: 'https://localhost:9200',
-  auth: {
-    username: process.env.ELASTIC_USERNAME,
-    password: process.env.ELASTIC_PASSWORD,
-  },
-});
 
 searchElasticApi.get('/', async (req, res) => {
   try {
@@ -25,8 +15,8 @@ searchElasticApi.get('/', async (req, res) => {
           'Content-Type': 'application/json',
         },
         auth: {
-          username: 'elastic',
-          password: 'SXnHrzwJBTS3ee_w=5Y=',
+          username: process.env.ELASTIC_USERNAME,
+          password: process.env.ELASTIC_PASSWORD,
         },
         data: {
           query: {

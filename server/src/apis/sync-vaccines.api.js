@@ -2,7 +2,7 @@ const syncVaccinesApi = require('express').Router();
 const axios = require('axios');
 const { Client } = require('@elastic/elasticsearch');
 
-// ==================== CONNECT ELASTICSEARCH ====================
+// Connect Elasticsearch
 const client = new Client({
   node: 'https://localhost:9200',
   auth: {
@@ -23,6 +23,7 @@ syncVaccinesApi.get('/', async (req, res) => {
           await client.index({
             index: 'vaccines',
             document: {
+              vaccineId: responseVaccines.data[i]._id,
               name: responseVaccines.data[i].name,
               country: responseVaccines.data[i].country,
               concept: responseVaccines.data[i].concept,
