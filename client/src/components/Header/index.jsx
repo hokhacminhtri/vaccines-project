@@ -27,12 +27,12 @@ const navBarItems = [
   },
   {
     name: 'Đăng ký tiêm',
-    to: '/',
+    to: '/registration',
     Icon: CalendarMonthIcon,
   },
   {
     name: 'Đặt mua vaccine',
-    to: '/',
+    to: '/registration',
     Icon: ShoppingCartIcon,
   },
   {
@@ -65,6 +65,11 @@ const menuBarItems = [
         to: '/',
       },
     ],
+  },
+  {
+    name: 'Danh sách vắc xin',
+    to: '/vaccine',
+    subMenu: [],
   },
   {
     name: 'Tiêm chủng cho trẻ em',
@@ -165,64 +170,7 @@ const menuBarItems = [
     ],
   },
   {
-    name: 'Cẩm nang',
-    to: '/',
-    subMenu: [
-      {
-        name: 'Lịch tiêm chủng',
-        to: '/',
-      },
-      {
-        name: 'Thông tin sản phẩm vaccine',
-        to: '/',
-      },
-      {
-        name: 'Những điều cần biết trước khi tiêm chủng',
-        to: '/',
-      },
-      {
-        name: 'Quy trình tiêm chủng tại VNVC',
-        to: '/',
-      },
-      {
-        name: 'Những điều cần biết sau khi tiêm chủng',
-        to: '/',
-      },
-      {
-        name: 'Tiêm chủng trước khi đi nước ngoài',
-        to: '/',
-      },
-      {
-        name: 'Download cẩm nang',
-        to: '/',
-      },
-      {
-        name: 'Câu hỏi thường gặp',
-        to: '/',
-      },
-      {
-        name: 'Trực tuyến',
-        to: '/',
-      },
-    ],
-  },
-  {
     name: 'Bảng giá',
-    to: '/',
-    subMenu: [],
-  },
-  {
-    name: 'Bệnh học',
-    to: '/',
-    subMenu: [
-      {
-        name: 'Thông tin bệnh học',
-        to: '/',
-      },
-    ],
-  },
-  {
-    name: 'Tin tức',
     to: '/',
     subMenu: [],
   },
@@ -298,7 +246,7 @@ function Menubar() {
     <>
       <Box>
         <Container maxWidth="lg">
-          <Box display="flex" justifyContent="center">
+          <Box display="flex" justifyContent="space-between">
             {menuBarItems.map((item, index) => (
               <Box key={index} zIndex={9999}>
                 <Link to={item.to}>

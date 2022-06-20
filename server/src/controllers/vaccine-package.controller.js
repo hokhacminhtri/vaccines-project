@@ -3,6 +3,7 @@ const { mongoosePaginate } = require('../mongoose-paginate');
 const DEFAULT = require('../constants/default');
 const { createClient } = require('redis');
 const { REDIS_KEY, REDIS_TTL } = require('../constants/redis-key');
+const mongoose = require('mongoose');
 
 exports.getAllPackages = async (req, res) => {
   try {
@@ -18,23 +19,28 @@ exports.getAllPackages = async (req, res) => {
 exports.getPackageList = async (req, res) => {
   try {
     let page = req.query?.page || 1;
-    const { select = '', sort = 'price' } = req.query;
+    const { select = '', sort = 'price', categoryId = '' } = req.query;
     const redisClient = createClient();
 
     await redisClient.connect();
-    const redisKey = `${REDIS_KEY.VACCINE_PACKAGE_LIST}-${page}-${select}-${sort}`;
+    const redisKey = `${REDIS_KEY.VACCINE_PACKAGE_LIST}-${page}-${select}-${sort}-${categoryId}`;
     const cachedDocs = await redisClient.get(redisKey);
     let vaccinePackages = {};
 
     if (cachedDocs) {
       vaccinePackages = JSON.parse(cachedDocs);
     } else {
+      const query = categoryId
+        ? { 'category.categoryId': new mongoose.Types.ObjectId(categoryId) }
+        : {};
+
       vaccinePackages = await mongoosePaginate(
         VaccinePackage,
-        {},
+        query,
         { page: Number(page), pageSize: DEFAULT.PAGE_SIZE },
         { sort, select },
       );
+
       await redisClient.set(redisKey, JSON.stringify(vaccinePackages), {
         EX: REDIS_TTL.VACCINE_PACKAGE_LIST,
       });

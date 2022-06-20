@@ -14,17 +14,7 @@ export default function VaccinationChildren() {
   usePageTitle('Tiêm chủng cho trẻ em');
   return (
     <Container sx={{ paddingBottom: 5 }}>
-      <div className="row div-breckum">
-        <div className="col-xs-12">
-          <span typeof="v:Breadcrumb">
-            <a href="/" rel="v:url" property="v:title">
-              TRANG CHỦ
-            </a>{' '}
-            » <span className="breadcrumb_last">Tiêm Chủng Cho Trẻ Em</span>
-          </span>
-        </div>
-      </div>
-      <h3 className="content-title">
+      <h3 className="content-title" style={{ marginTop: '24px' }}>
         <span className="text-blue">Tiêm Chủng Cho Trẻ Em</span>
       </h3>
       <p>
