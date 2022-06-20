@@ -35,6 +35,7 @@ const syncVaccinesApi = require('./src/apis/sync-vaccines.api');
 const syncVaccinePackagesApi = require('./src/apis/sync-vaccine-packages.api');
 const searchApi = require('./src/apis/search.api');
 const searchElasticApi = require('./src/apis/search-elasticsearch.api');
+const categoryApi = require('./src/apis/category.api');
 
 app.use(cors(corsOptions));
 app.use(morgan('tiny'));
@@ -61,6 +62,7 @@ app.use('/address', addressApi);
 app.use('/customer', customerApi);
 app.use('/vaccine-package', vaccinePackageApi);
 app.use('/vaccine', vaccineApi);
+app.use('/category', categoryApi);
 app.use('/account', accountApi);
 app.use('/v1/test', testApi);
 app.use('/sync-vaccines-mongodb-elasticsearch', syncVaccinesApi);
