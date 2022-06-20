@@ -23,7 +23,7 @@ exports.getPackageList = async (req, res) => {
     const redisClient = createClient();
 
     await redisClient.connect();
-    const redisKey = `${REDIS_KEY.VACCINE_PACKAGE_LIST}-${page}-${select}-${sort}`;
+    const redisKey = `${REDIS_KEY.VACCINE_PACKAGE_LIST}-${page}-${select}-${sort}-${categoryId}`;
     const cachedDocs = await redisClient.get(redisKey);
     let vaccinePackages = {};
 
@@ -31,14 +31,16 @@ exports.getPackageList = async (req, res) => {
       vaccinePackages = JSON.parse(cachedDocs);
     } else {
       const query = categoryId
-        ? { 'categories.categoryId': new mongoose.Types.ObjectId(categoryId) }
+        ? { 'category.categoryId': new mongoose.Types.ObjectId(categoryId) }
         : {};
+
       vaccinePackages = await mongoosePaginate(
         VaccinePackage,
         query,
         { page: Number(page), pageSize: DEFAULT.PAGE_SIZE },
         { sort, select },
       );
+
       await redisClient.set(redisKey, JSON.stringify(vaccinePackages), {
         EX: REDIS_TTL.VACCINE_PACKAGE_LIST,
       });

@@ -22,7 +22,7 @@ const vaccinePackagesSchema = new Schema({
     type: String,
     required: true,
   },
-  categories: {
+  category: {
     categoryId: {
       type: Schema.Types.ObjectId,
       required: true,
