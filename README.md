@@ -6,7 +6,7 @@
 
 - 18120580 - Đinh Quang Thọ
 - 18120606 - Trần Thị Trang
-- 18120609 - Hồ Khắc Minh Trí
+- 18120609 - Hồ Khắc Minh Trí (Nhóm trưởng)
 - 18120634 - Nguyễn Lê Anh Tuấn
 
 # Yêu cầu đồ án
@@ -54,12 +54,18 @@ Báo cáo cần ghi rõ thông tin cá nhân, thông tin nhóm, đánh giá cá 
   - mysql2 v2.3.3
 - Connect MongoDB
   - mongoose v6.3.0
+- Connect Redis
+  - redis v4.1.0
+- Connect Elasticsearch
+  - @elastic/elasticsearch v8.2.1
 - Read env - dotenv v16.0.0
 
 ## **Databases**
 
 - MySQL v8.0.x
 - MongoDB v5.0.x
+- Redis v5.0.x
+- Elasticsearch v8.2.2
 
 ## **Môi trường phát triển**
 
@@ -153,3 +159,18 @@ root@elasticsearch: elasticsearch-reset-password -u {username}
 ```
 > yarn dev
 ```
+
+# Kết quả chạy chương trình
+
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result01.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result02.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result03.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result04.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result05.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result06.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result07.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result08.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result09.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result10.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result11.jpg" /></div>
+<div align="center"><img src="https://res.cloudinary.com/minhtri2404/image/upload/v1658719838/vaccines-project/Github-README/result12.jpg" /></div>
